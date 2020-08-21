@@ -54,8 +54,12 @@ scripts:
 - local/js/semantic-ui-algolia.js
 - local/js/aloha-events.js
 
-sidebar:
-  bio: Student
-  location: Shanghai
-  social:
-    github: https:/github.com/yuban00018
+ sidebar:
+   bio: Student / Programmer
+   avatar: /images/avatar.jpg
+   subtitle: 没到24岁，是学生
+   location: Shanghai
+   social:
+     github: https://github.com/yuban00018
+     weibo: 
+     twitter: 

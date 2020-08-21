@@ -61,7 +61,7 @@ win + X + K 打开磁盘管理，选中一个硬盘，然后压缩出你要的�
 
 打开terminal，自动获取更新。
 
-```terminal
+```bash
 sudo apt update
 sudo apt-get update
 sudo apt-get upgrade

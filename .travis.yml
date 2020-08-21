@@ -3,11 +3,19 @@ language: node_js
 node_js:
   - 14 # use nodejs v14 LTS
 cache: npm
+
+#安装插件
+install:
+  - npm install cheerio
+
 branches:
   only:
     - master # build master branch only
+
 script:
+  - hexo clean
   - hexo generate # generate static files
+
 deploy:
   provider: pages
   skip-cleanup: true

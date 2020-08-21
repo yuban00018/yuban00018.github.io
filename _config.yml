@@ -4,12 +4,23 @@
 
 # Site
 title: 曹卓文的博客
-subtitle: ''
-description: '写一些遇到过的坑，方便以后复习'
+subtitle: '踩坑日记'
+description: ''
 keywords:
-author: 
+author: '曹卓文'
 language: zh-CN
-timezone: 'UTC+8'
+timezone: ''
+
+#sidebar是写在外面的config我也是醉了……
+sidebar: 
+  bio: Student / Programmer
+  avatar: /images/avatar.jpg #把头像的名字改成avatar才能使用！我tm惊了
+  subtitle:
+  location: Shanghai
+  social:
+    github: https://github.com/yuban00018
+    weibo:
+    twitter:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

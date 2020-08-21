@@ -53,13 +53,3 @@ scripts:
 #- cdn/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js
 - local/js/semantic-ui-algolia.js
 - local/js/aloha-events.js
-
- sidebar:
-   bio: Student / Programmer
-   avatar: /images/avatar.jpg
-   subtitle: 没到24岁，是学生
-   location: Shanghai
-   social:
-     github: https://github.com/yuban00018
-     weibo: 
-     twitter: 

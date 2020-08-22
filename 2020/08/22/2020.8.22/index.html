@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>hexo+TravisCI+github建立个人博客(1)部署篇 | 曹卓文的博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="&amp;#x8BF4;&amp;#x660E;&amp;#x535A;&amp;#x4E3B;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x662F;Ubuntu20.04LTS&amp;#xFF0C;Node.js 14 LTS&amp;#xFF0C;VsCode&amp;#x3002; &amp;#x672C;&amp;#x6587;&amp;#x91C7;&amp;#x7528;Hexo+github+Travis-CI&amp;#x7684;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+TravisCI+github建立个人博客(1)部署篇">
+<meta property="og:url" content="http://yoursite.com/2020/08/22/2020.8.22/index.html">
+<meta property="og:site_name" content="曹卓文的博客">
+<meta property="og:description" content="&amp;#x8BF4;&amp;#x660E;&amp;#x535A;&amp;#x4E3B;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x662F;Ubuntu20.04LTS&amp;#xFF0C;Node.js 14 LTS&amp;#xFF0C;VsCode&amp;#x3002; &amp;#x672C;&amp;#x6587;&amp;#x91C7;&amp;#x7528;Hexo+github+Travis-CI&amp;#x7684;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yuban00018/MyImages/master/show_hidden_file.jpg">
+<meta property="article:published_time" content="2020-08-22T06:08:27.881Z">
+<meta property="article:modified_time" content="2020-08-22T06:08:27.881Z">
+<meta property="article:author" content="曹卓文">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yuban00018/MyImages/master/show_hidden_file.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "曹卓文",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>曹卓文的博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">曹卓文</a>
+                    
+                        <div class="meta">
+                            Student / Programmer
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a target="_blank" rel="noopener" href="https://github.com/yuban00018"><i class="large github icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        首页
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-2020.8.22" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    hexo+TravisCI+github建立个人博客(1)部署篇
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <html><head></head><body><h2 id="&#x8BF4;&#x660E;"><a href="#&#x8BF4;&#x660E;" class="headerlink" title="&#x8BF4;&#x660E;"></a>&#x8BF4;&#x660E;</h2><p>&#x535A;&#x4E3B;&#x4F7F;&#x7528;&#x7684;&#x73AF;&#x5883;&#x662F;Ubuntu20.04LTS&#xFF0C;Node.js 14 LTS&#xFF0C;VsCode&#x3002;</p>
+<p>&#x672C;&#x6587;&#x91C7;&#x7528;Hexo+github+Travis-CI&#x7684;&#x65B9;&#x5F0F;&#x5EFA;&#x7ACB;&#x9759;&#x6001;&#x535A;&#x5BA2;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h2><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x91C7;&#x7528;<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo&#x5B98;&#x65B9;&#x4E2D;&#x6587;&#x6587;&#x6863;</a>&#x7684;&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;</p>
+<h2 id="&#x524D;&#x671F;&#x51C6;&#x5907;"><a href="#&#x524D;&#x671F;&#x51C6;&#x5907;" class="headerlink" title="&#x524D;&#x671F;&#x51C6;&#x5907;"></a>&#x524D;&#x671F;&#x51C6;&#x5907;</h2><p>&#x9996;&#x5148;&#x9075;&#x5FAA;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x5B89;&#x88C5;Hexo&#x3002;&#x9700;&#x8981;&#x7684;&#x524D;&#x7F6E;&#x7A0B;&#x5E8F;&#x6709;<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>&#x4EE5;&#x53CA;<a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>&#x3002;&#x5B8C;&#x6210;&#x4E0B;&#x8F7D;&#x540E;&#x5B89;&#x88C5;Hexo&#xFF1A;</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x524D;&#x671F;&#x7684;&#x5B89;&#x88C5;&#x6D41;&#x7A0B;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
+<h2 id="&#x5728;&#x672C;&#x5730;&#x5EFA;&#x7AD9;&#x5E76;&#x540C;&#x6B65;&#x5230;github"><a href="#&#x5728;&#x672C;&#x5730;&#x5EFA;&#x7AD9;&#x5E76;&#x540C;&#x6B65;&#x5230;github" class="headerlink" title="&#x5728;&#x672C;&#x5730;&#x5EFA;&#x7AD9;&#x5E76;&#x540C;&#x6B65;&#x5230;github"></a>&#x5728;&#x672C;&#x5730;&#x5EFA;&#x7AD9;&#x5E76;&#x540C;&#x6B65;&#x5230;github</h2><p>&#x9996;&#x5148;&#x5728;<a target="_blank" rel="noopener" href="https://github.com/">github</a>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;repository&#xFF0C;&#x547D;&#x540D;&#x4E3A; username.github.io&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;io&#x57DF;&#x540D;&#x3002;username&#x586B;&#x5165;&#x81EA;&#x5DF1;&#x7684;&#x7528;&#x6237;&#x540D;&#x79F0;&#x3002;</p>
+<p>&#x5B8C;&#x6210;&#x8FD9;&#x6B65;&#x540E;&#xFF0C;&#x5728;&#x672C;&#x5730;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x50A8;&#x5B58;&#x4F60;&#x7684;&#x7F51;&#x7AD9;&#xFF0C;&#x53F3;&#x952E;&#x6253;&#x5F00;terminal&#xFF0C;&#x8F93;&#x5165;&#xFF1A;</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;username.github.io&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;username.github.io&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x672C;&#x5730;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x5C31;&#x5EFA;&#x7ACB;&#x597D;&#x4E86;&#xFF0C;&#x5728;&#x684C;&#x9762;&#x4E0A;&#x6253;&#x5F00;gitbash&#xFF0C;clone&#x4F60;&#x7684;&#x9879;&#x76EE;:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/username/username.github.io/</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x52FE;&#x9009;&#x663E;&#x793A;&#x4E0D;&#x53EF;&#x89C1;&#x6587;&#x4EF6;:</p>
+<img src="https://raw.githubusercontent.com/yuban00018/MyImages/master/show_hidden_file.jpg" width="75%" height="75%">
+
+<p>&#x7136;&#x540E;&#x628A;.git&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x5230;&#x4F60;init&#x7684;folder&#x91CC;&#x9762;&#x5E76;&#x68C0;&#x67E5; .gitignore &#x6587;&#x4EF6;&#x4E2D;&#x662F;&#x5426;&#x5305;&#x542B; public &#x4E00;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5728;&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x627E;&#x5230;.gitignore&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x52A0;&#x4E0A;&#xFF1A;</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5728;vscode&#x91CC;&#x9762;&#x9009;&#x62E9;&#x6682;&#x5B58;&#x66F4;&#x6539;&#x63D0;&#x4EA4;&#x5E76;&#x63A8;&#x9001;&#xFF0C;&#x81F3;&#x6B64;&#x4F60;&#x7684;&#x7F51;&#x7AD9;&#x6587;&#x4EF6;&#x5C31;&#x88AB;&#x540C;&#x6B65;&#x5230;github&#x4E86;&#x3002;</p>
+<p>&#x4F46;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x4F60;&#x73B0;&#x5728;&#x5E76;&#x4E0D;&#x80FD;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;&#x7F51;&#x7AD9;&#xFF0C;github&#x5C06;&#x4F1A;&#x663E;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x7528;&#x614C;&#x5F20;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x672C;&#x5730;&#x9884;&#x89C8;"><a href="#&#x672C;&#x5730;&#x9884;&#x89C8;" class="headerlink" title="&#x672C;&#x5730;&#x9884;&#x89C8;*"></a>&#x672C;&#x5730;&#x9884;&#x89C8;*</h3><p>&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x672C;&#x5730;&#x63D0;&#x524D;&#x9884;&#x89C8;build&#x540E;&#x7684;&#x6548;&#x679C;:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">hexo s</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x4F1A;&#x5728;&#x672C;&#x5730;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x94FE;&#x63A5;&#xFF0C;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x6253;&#x5F00;&#x5C31;&#x53EF;&#x4EE5;&#x9884;&#x89C8;&#x6548;&#x679C;&#xFF0C;&#x8FD4;&#x56DE;terminal&#x6309;&#x4E0B;Ctrl+C&#x5C31;&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;Travis-CI&#x534F;&#x52A9;&#x90E8;&#x7F72;"><a href="#&#x4F7F;&#x7528;Travis-CI&#x534F;&#x52A9;&#x90E8;&#x7F72;" class="headerlink" title="&#x4F7F;&#x7528;Travis-CI&#x534F;&#x52A9;&#x90E8;&#x7F72;"></a>&#x4F7F;&#x7528;Travis-CI&#x534F;&#x52A9;&#x90E8;&#x7F72;</h2><p>&#x6211;&#x4EEC;&#x4E0A;&#x4F20;&#x5230;github&#x7684;master&#x5206;&#x652F;&#x7684;&#x5176;&#x5B9E;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x7F51;&#x9875;&#x9700;&#x8981;&#x7ECF;&#x8FC7;hexo generate&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x663E;&#x793A;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x91C7;&#x7528;Travis-CI&#x534F;&#x52A9;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9759;&#x6001;&#x7F51;&#x9875;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x5F15;&#x7528;&#x5B98;&#x65B9;&#x6559;&#x7A0B;(&#x542B;&#x5C0F;&#x5E45;&#x5EA6;&#x4FEE;&#x6539;)&#xFF1A;</p>
+<ol class="ui list">
+<li><p>&#x5C06;<a target="_blank" rel="noopener" href="https://github.com/marketplace/travis-ci">Travis CI</a>&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684; GitHub&#x8D26;&#x6237;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>&#x524D;&#x5F80; GitHub &#x7684;<a target="_blank" rel="noopener" href="https://github.com/settings/installations">Applications settings</a>&#x914D;&#x7F6E; Travis CI &#x6743;&#x9650;&#xFF0C;&#x4F7F;&#x5176;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x4F60;&#x7684; repository&#x3002;</p>
+</li>
+<li><p>&#x4F60;&#x5E94;&#x8BE5;&#x4F1A;&#x88AB;&#x91CD;&#x5B9A;&#x5411;&#x5230;<a target="_blank" rel="noopener" href="https://github.com/marketplace/travis-ci">Travis CI</a>&#x7684;&#x9875;&#x9762;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x9875;&#xFF0C;&#x524D;&#x5F80;GitHub&#x65B0;&#x5EFA;<a target="_blank" rel="noopener" href="https://github.com/settings/tokens">Personal Access Token</a>&#xFF0C;&#x53EA;&#x52FE;&#x9009;<strong>repo</strong>&#x7684;&#x6743;&#x9650;&#x5E76;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<strong>Token</strong>&#x3002;<strong>Token</strong>&#x751F;&#x6210;&#x540E;&#x8BF7;&#x7ACB;&#x5373;&#x590D;&#x5236;&#x5E76;&#x4FDD;&#x5B58;&#x597D;&#x3002;</p>
+</li>
+<li><p>&#x56DE;&#x5230;<a target="_blank" rel="noopener" href="https://github.com/marketplace/travis-ci">Travis CI</a>&#xFF0C;&#x524D;&#x5F80;&#x4F60;&#x7684; repository&#x7684;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#xFF0C;&#x5728;<strong>Environment Variables</strong>&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;Name&#x4E3A; <strong>GH_TOKEN</strong>&#xFF0C;<strong>Value</strong>&#x4E3A;&#x521A;&#x624D;&#x4F60;&#x5728; GitHub &#x751F;&#x6210;&#x7684; Token&#x3002;&#x786E;&#x4FDD;<strong>DISPLAY VALUE IN BUILD LOG</strong>&#x4FDD;&#x6301;<strong>&#x4E0D;&#x88AB;&#x52FE;&#x9009;</strong>&#x907F;&#x514D;&#x4F60;&#x7684;<strong>Token</strong>&#x6CC4;&#x6F0F;&#x3002;&#x70B9;&#x51FB;<strong>Add</strong>&#x4FDD;&#x5B58;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x4F60;&#x7684; Hexo &#x7AD9;&#x70B9;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; .travis.yml &#x6587;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">14</span> <span class="comment"># use nodejs v14 LTS</span></span><br><span class="line"><span class="attr">cache:</span> <span class="string">npm</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># build master branch only</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span> <span class="comment"># generate static files</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">pages</span></span><br><span class="line">  <span class="attr">skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github-token:</span> <span class="string">$GH_TOKEN</span></span><br><span class="line">  <span class="attr">keep-history:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">on:</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">local-dir:</span> <span class="string">public</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>&#x5C06; .travis.yml &#x63A8;&#x9001;&#x5230; repository &#x4E2D;&#x3002;Travis CI &#x5E94;&#x8BE5;&#x4F1A;&#x81EA;&#x52A8;&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x5C06;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x63A8;&#x9001;&#x5230;&#x540C;&#x4E00; repository &#x4E0B;&#x7684; gh-pages &#x5206;&#x652F;&#x4E0B;</p>
+</li>
+<li><p>&#x5728; GitHub &#x4E2D;&#x524D;&#x5F80;&#x4F60;&#x7684; repository &#x7684;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#xFF0C;&#x4FEE;&#x6539; GitHub Pages &#x7684;&#x90E8;&#x7F72;&#x5206;&#x652F;&#x4E3A; gh-pages&#x3002;</p>
+</li>
+<li><p>&#x524D;&#x5F80; <a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io</a> &#x67E5;&#x770B;&#x4F60;&#x7684;&#x7AD9;&#x70B9;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x3002;&#x8FD9;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x65F6;&#x95F4;&#x3002;</p>
+</li>
+</ol>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x4F60;&#x7684;&#x535A;&#x5BA2;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;&#x4E86;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x767E;&#x5EA6;&#x662F;&#x641C;&#x7D22;&#x4E0D;&#x5230;&#x4F60;&#x7684;&#x535A;&#x5BA2;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x88AB;baidu&#x7684;&#x722C;&#x866B;&#x88AB;ban&#x4E86;&#x3002;</p>
+<p>&#x540E;&#x7EED;&#x66F4;&#x65B0;&#x5982;&#x4F55;&#x66F4;&#x6362;&#x4E3B;&#x9898;&#x4EE5;&#x53CA;&#x7F16;&#x8F91;&#x7B2C;&#x4E00;&#x6761;&#x535A;&#x5BA2;&#x2026;&#x2026;</p>
+</body></html>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2020-08-22T06:08:27.881Z" itemprop="datePublished">2020-08-22</time>
+
+    </span>
+    <span class="post-description-item">
+        
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2020/08/22/2020.8.21/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    win10与ubuntu20.04LTS双系统配置
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a class="ui tiny button disabled">下一篇<i class="angle right icon"></i></a>
+
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#说明"><span>说明</span></a></li><li><a href="#参考文献"><span>参考文献</span></a></li><li><a href="#前期准备"><span>前期准备</span></a></li><li><a href="#在本地建站并同步到github"><span>在本地建站并同步到github</span></a><ol><li><a href="#本地预览"><span>本地预览*</span></a></li></ol></li><li><a href="#使用Travis-CI协助部署"><span>使用Travis-CI协助部署</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2020 <a href="/">曹卓文</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>

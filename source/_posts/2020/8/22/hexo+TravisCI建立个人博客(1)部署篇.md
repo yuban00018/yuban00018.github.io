@@ -1,5 +1,5 @@
 ---
-title: hexo+TravisCI+github建立个人博客(1)部署篇
+title: hexo+TravisCI建立个人博客(1)部署篇
 ---
 
 ## 说明

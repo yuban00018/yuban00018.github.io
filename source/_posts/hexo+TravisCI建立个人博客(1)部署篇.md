@@ -1,5 +1,8 @@
 ---
 title: hexo+TravisCI建立个人博客(1)部署篇
+date: 2020-8-22 00:00:00
+tags: hexo
+desc: 本文采用Hexo+github.io+Travis-CI的方式建立静态博客
 ---
 
 ## 说明

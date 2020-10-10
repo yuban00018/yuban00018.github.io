@@ -1,5 +1,9 @@
 ---
 title: win10与ubuntu20.04LTS双系统配置
+date: 2020-8-21 00:00:00
+tags: ubuntu
+desc: 本文主要参照了：[ubuntu20.04+windows双系统安装](https://blog.csdn.net/Amorx12345/article/details/97510324)，
+基本上是按照此文的操作完成的双系统安装，本文主要是精简内容然后增加一些个人踩坑的东西。
 ---
 ## 引言
 新学期开学了，买不起新的笔记本只好整点花活装一下双系统。

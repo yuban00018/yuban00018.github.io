@@ -1,283 +1,155 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> win10与ubuntu20.04LTS双系统配置 · 曹卓文的博客</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="win10与ubuntu20.04LTS双系统配置 - 曹卓文"><meta name="keywords"><meta name="author" content="曹卓文"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="曹卓文的博客"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="曹卓文的博客" type="application/atom+xml">
+</head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">win10与ubuntu20.04LTS双系统配置</h1><div class="post-info">2020-10-10<p class="visit"><i data-identity="2020/10/10/2020/8/21/win10与ubuntu20.04LTS双系统配置/" class="article-timer"></i><span>次访问</span></p></div><div class="post-content"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>新学期开学了，买不起新的笔记本只好整点花活装一下双系统。</p>
+<p>主要还是暑假学期整CV的库把我整哭了😭，一个两个都不支持windows，但我没有性能好一点的linux主机。于是这次把旧游戏本清空了一下硬盘，然后倒腾了一下双系统。当中有一些坑可以记录一下，<br>讲不定之后我给台式机上双系统用得上。</p>
+<p>本文主要参照了：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amorx12345/article/details/97510324">ubuntu20.04+windows双系统安装</a> ，<br>在此感谢原博主，基本上是按照此文的操作完成的双系统安装，本文主要是精简内容然后增加一些个人踩坑的东西。</p>
+<h2 id="需要提前下载的内容"><a href="#需要提前下载的内容" class="headerlink" title="需要提前下载的内容"></a>需要提前下载的内容</h2><h3 id="UltralSO"><a href="#UltralSO" class="headerlink" title="UltralSO"></a>UltralSO</h3><p>官方下载链接：<br><a target="_blank" rel="noopener" href="https://cn.ultraiso.net/uiso9_cn.exe">https://cn.ultraiso.net/uiso9_cn.exe</a></p>
+<h3 id="Ubuntu20-04"><a href="#Ubuntu20-04" class="headerlink" title="Ubuntu20.04"></a>Ubuntu20.04</h3><p>官方下载链接：<br><a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop/thank-you?version=20.04.1">https://ubuntu.com/download/desktop/thank-you?version=20.04.1</a></p>
+<p>tuna源：<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04.1">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04.1</a></p>
+<p>注：<strong>tuna源</strong>请选择desktop而不是server版本，不要下载错了</p>
+<h2 id="Step1-删除卷"><a href="#Step1-删除卷" class="headerlink" title="Step1 删除卷"></a>Step1 删除卷</h2><p>win + X + K 打开磁盘管理，选中一个硬盘，然后压缩出你要的大小，然后删除卷。</p>
+<h2 id="Step2-制作启动盘"><a href="#Step2-制作启动盘" class="headerlink" title="Step2 制作启动盘"></a>Step2 制作启动盘</h2><p><a target="_blank" rel="noopener" href="https://cn.ultraiso.net/uiso9_cn.exe">下载UltralSO</a>，打开选择试用，拖入iso文件。<br>单击工具栏上的[启动]-&gt;[写入硬盘映像]。然后选择<strong>硬盘驱动器</strong>为指定U盘，写入方式为USB-HDD+。请不要和博主一样手贱选了软盘驱动器……然后按下写入，就完成了。</p>
+<h2 id="非必须项，关闭快速启动"><a href="#非必须项，关闭快速启动" class="headerlink" title="非必须项，关闭快速启动"></a>非必须项，关闭快速启动</h2><p>按住Win + X，选择[电源选项]-&gt;[其他电源设置]，依次执行：[选择电源按钮的功能] -&gt; [更改当前不可用的设置] -&gt; [取消勾选快速启动] -&gt; [保存修改]</p>
+<p>虽然原博主写了这条，但我感觉好像是用不着的，开机长按对应主板的bios按键就可以顺利进入bios。但是禁用快速启动可以有效解决B450M主板关机后第一次开机不过自检的问题，<br>至于为什么有效，我也不懂😓。</p>
+<h2 id="Step3-进入bios修改启动顺序"><a href="#Step3-进入bios修改启动顺序" class="headerlink" title="Step3 进入bios修改启动顺序"></a>Step3 进入bios修改启动顺序</h2><p>插上U盘并重启，长按对应按钮，我的机械革命笔记本按的是F2。进入bios，选择boot，然后把插进去的U盘设为开机首选项。保存并退出。</p>
+<h2 id="Step4-安装Ubuntu"><a href="#Step4-安装Ubuntu" class="headerlink" title="Step4 安装Ubuntu"></a>Step4 安装Ubuntu</h2><p>重启后会自动进入到安装引导，建议选择英文系统，然后后续安装中文输入法，因为如果选择了中文系统你的Desktop会变成中文的[桌面]，非常蛋疼。<br>选择Minimal installation安装，不要勾选Other Option。</p>
+<h4 id="注意：Installation-type"><a href="#注意：Installation-type" class="headerlink" title="注意：Installation type"></a>注意：Installation type</h4><p>这里是我和原博文产生冲突的地方，我选择的是Install Ubuntu alongside WindowsBoot Manager而不是Something else.<br>实测，直接使用第一个选项完全可以正常安装系统，不需要特别设置。当然，如果有特殊需求可以直接点击<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amorx12345/article/details/97510324">原博文</a><br>查看如何自定义分区。</p>
+<p>后面就是常规流程，重启，然后按提示拔下U盘。</p>
+<h2 id="Step5-设置-个人踩坑点"><a href="#Step5-设置-个人踩坑点" class="headerlink" title="Step5 设置(个人踩坑点)"></a>Step5 设置(个人踩坑点)</h2><p>在按要求拔掉U盘之后我进入的是Windows系统，但是重新启动也没有进入引导菜单，按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/billy_chen_2013/article/details/17425363?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~first_rank_v2~rank_v25-6-17425363.nonecase&utm_term=easybcd%E8%AF%86%E5%88%AB%E4%B8%8D%E4%BA%86linux">其他教程</a><br>下载了EasyCBD之类的软件，然而并没有什么卵用😥于是自己摸索了一下，发现只要再进到bios里，然后到Boot栏目，找到<strong>UEFI Hard Disk Drive BBS Priorities</strong><br>然后把Ubuntu移到windows上面就可以了，保存然后退出就可以进入到正常的引导界面。</p>
+<p>打开terminal，自动获取更新。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
 
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <title>win10与ubuntu20.04LTS双系统配置 | 曹卓文的博客</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="&amp;#x5F15;&amp;#x8A00;&amp;#x65B0;&amp;#x5B66;&amp;#x671F;&amp;#x5F00;&amp;#x5B66;&amp;#x4E86;&amp;#xFF0C;&amp;#x4E70;&amp;#x4E0D;&amp;#x8D77;&amp;#x65B0;&amp;#x7684;&amp;#x7B14;&amp;#x8BB0;&amp;#x672C;&amp;#x53EA;&amp;#x597D;&amp;#x6574;&amp;#x70B9;&amp;#x82B1;&amp;#x6D3B;&amp;#x88C5;&amp;#x4E00;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="win10与ubuntu20.04LTS双系统配置">
-<meta property="og:url" content="http://yoursite.com/2020/10/10/2020/8/21/win10%E4%B8%8Eubuntu20.04LTS%E5%8F%8C%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/index.html">
-<meta property="og:site_name" content="曹卓文的博客">
-<meta property="og:description" content="&amp;#x5F15;&amp;#x8A00;&amp;#x65B0;&amp;#x5B66;&amp;#x671F;&amp;#x5F00;&amp;#x5B66;&amp;#x4E86;&amp;#xFF0C;&amp;#x4E70;&amp;#x4E0D;&amp;#x8D77;&amp;#x65B0;&amp;#x7684;&amp;#x7B14;&amp;#x8BB0;&amp;#x672C;&amp;#x53EA;&amp;#x597D;&amp;#x6574;&amp;#x70B9;&amp;#x82B1;&amp;#x6D3B;&amp;#x88C5;&amp;#x4E00;">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-10T07:47:43.485Z">
-<meta property="article:modified_time" content="2020-10-10T07:47:43.485Z">
-<meta property="article:author" content="曹卓文">
-<meta name="twitter:card" content="summary">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "曹卓文",
-  "url": "http://yoursite.com"
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>重新看了一下流程感觉也没很多东西，但当时还是折腾了很久……之后再更新一篇用hexo+github.io+travisci搭博客的记录，差不多暑假为数不多干的有意义的事情就这些了。<br>讲不定之后再写个十三机兵防卫圈的安利文（迫真）。我以后应该每个月更新一次刷洛谷还有leetcode的进度才是。</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/10/10/2020/10/10/20%E5%B9%B48-10%E6%9C%88%E5%8F%8D%E6%80%9D/" title="20年8-9月反思" class="prev">PREV</a><a href="/2020/10/10/2020/8/22/hexo+TravisCI%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2(1)%E9%83%A8%E7%BD%B2%E7%AF%87/" title="hexo+TravisCI建立个人博客(1)部署篇" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "aD8jJBpu4oew3ovNY73z6Rdq-gzGzoHsz",
+    appKey: "FdzS5SOPHdhYQoEUngQ8K2QW",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2016 - 2020 <a target="_blank">曹卓文</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("aD8jJBpu4oew3ovNY73z6Rdq-gzGzoHsz", "FdzS5SOPHdhYQoEUngQ8K2QW");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
 }
-</script>
-    <script>
-    var algoliaEnabled = false;
-    
-</script>
 
-    
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
 
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
 
-<meta name="generator" content="Hexo 5.0.2"></head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
 
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
 
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>曹卓文的博客</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">曹卓文</a>
-                    
-                        <div class="meta">
-                            Student / Programmer
-                        </div>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        <div class="item">
-                            <i class="marker icon" style="float: left"></i>
-                            <div class="content">Shanghai</div>
-                        </div>
-                        
-                        
-                    </div>
+const calcAndWriteTimes = () => {
+let isPost = true;
 
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
+let timerAllDOM = document.querySelectorAll(".article-timer");
 
-                                <a target="_blank" rel="noopener" href="https://github.com/yuban00018"><i class="large github icon" style="float: left"></i></a>
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
 
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+let timerDOMCache = {};
 
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
 
-</div>
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
 
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        首页
-    </a>
-
-    
-
-    
-</div>
-
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-2020/8/21/win10与ubuntu20.04LTS双系统配置" class="ui main container article-type-post">
-
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
-                
-
-<h1 class="ui header">
-    
-    win10与ubuntu20.04LTS双系统配置
-</h1>
-
-
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <html><head></head><body><h2 id="&#x5F15;&#x8A00;"><a href="#&#x5F15;&#x8A00;" class="headerlink" title="&#x5F15;&#x8A00;"></a>&#x5F15;&#x8A00;</h2><p>&#x65B0;&#x5B66;&#x671F;&#x5F00;&#x5B66;&#x4E86;&#xFF0C;&#x4E70;&#x4E0D;&#x8D77;&#x65B0;&#x7684;&#x7B14;&#x8BB0;&#x672C;&#x53EA;&#x597D;&#x6574;&#x70B9;&#x82B1;&#x6D3B;&#x88C5;&#x4E00;&#x4E0B;&#x53CC;&#x7CFB;&#x7EDF;&#x3002;</p>
-<p>&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x6691;&#x5047;&#x5B66;&#x671F;&#x6574;CV&#x7684;&#x5E93;&#x628A;&#x6211;&#x6574;&#x54ED;&#x4E86;&#x1F62D;&#xFF0C;&#x4E00;&#x4E2A;&#x4E24;&#x4E2A;&#x90FD;&#x4E0D;&#x652F;&#x6301;windows&#xFF0C;&#x4F46;&#x6211;&#x6CA1;&#x6709;&#x6027;&#x80FD;&#x597D;&#x4E00;&#x70B9;&#x7684;linux&#x4E3B;&#x673A;&#x3002;&#x4E8E;&#x662F;&#x8FD9;&#x6B21;&#x628A;&#x65E7;&#x6E38;&#x620F;&#x672C;&#x6E05;&#x7A7A;&#x4E86;&#x4E00;&#x4E0B;&#x786C;&#x76D8;&#xFF0C;&#x7136;&#x540E;&#x5012;&#x817E;&#x4E86;&#x4E00;&#x4E0B;&#x53CC;&#x7CFB;&#x7EDF;&#x3002;&#x5F53;&#x4E2D;&#x6709;&#x4E00;&#x4E9B;&#x5751;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF0C;<br>&#x8BB2;&#x4E0D;&#x5B9A;&#x4E4B;&#x540E;&#x6211;&#x7ED9;&#x53F0;&#x5F0F;&#x673A;&#x4E0A;&#x53CC;&#x7CFB;&#x7EDF;&#x7528;&#x5F97;&#x4E0A;&#x3002;</p>
-<p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x53C2;&#x7167;&#x4E86;&#xFF1A;<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amorx12345/article/details/97510324">ubuntu20.04+windows&#x53CC;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;</a> &#xFF0C;<br>&#x5728;&#x6B64;&#x611F;&#x8C22;&#x539F;&#x535A;&#x4E3B;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x6309;&#x7167;&#x6B64;&#x6587;&#x7684;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x7684;&#x53CC;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;&#xFF0C;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x7CBE;&#x7B80;&#x5185;&#x5BB9;&#x7136;&#x540E;&#x589E;&#x52A0;&#x4E00;&#x4E9B;&#x4E2A;&#x4EBA;&#x8E29;&#x5751;&#x7684;&#x4E1C;&#x897F;&#x3002;</p>
-<h2 id="&#x9700;&#x8981;&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x7684;&#x5185;&#x5BB9;"><a href="#&#x9700;&#x8981;&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x7684;&#x5185;&#x5BB9;" class="headerlink" title="&#x9700;&#x8981;&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x7684;&#x5185;&#x5BB9;"></a>&#x9700;&#x8981;&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x7684;&#x5185;&#x5BB9;</h2><h3 id="UltralSO"><a href="#UltralSO" class="headerlink" title="UltralSO"></a>UltralSO</h3><p>&#x5B98;&#x65B9;&#x4E0B;&#x8F7D;&#x94FE;&#x63A5;&#xFF1A;<br><a target="_blank" rel="noopener" href="https://cn.ultraiso.net/uiso9_cn.exe">https://cn.ultraiso.net/uiso9_cn.exe</a></p>
-<h3 id="Ubuntu20-04"><a href="#Ubuntu20-04" class="headerlink" title="Ubuntu20.04"></a>Ubuntu20.04</h3><p>&#x5B98;&#x65B9;&#x4E0B;&#x8F7D;&#x94FE;&#x63A5;&#xFF1A;<br><a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop/thank-you?version=20.04.1">https://ubuntu.com/download/desktop/thank-you?version=20.04.1</a></p>
-<p>tuna&#x6E90;&#xFF1A;<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04.1">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04.1</a></p>
-<p>&#x6CE8;&#xFF1A;<strong>tuna&#x6E90;</strong>&#x8BF7;&#x9009;&#x62E9;desktop&#x800C;&#x4E0D;&#x662F;server&#x7248;&#x672C;&#xFF0C;&#x4E0D;&#x8981;&#x4E0B;&#x8F7D;&#x9519;&#x4E86;</p>
-<h2 id="Step1-&#x5220;&#x9664;&#x5377;"><a href="#Step1-&#x5220;&#x9664;&#x5377;" class="headerlink" title="Step1 &#x5220;&#x9664;&#x5377;"></a>Step1 &#x5220;&#x9664;&#x5377;</h2><p>win + X + K &#x6253;&#x5F00;&#x78C1;&#x76D8;&#x7BA1;&#x7406;&#xFF0C;&#x9009;&#x4E2D;&#x4E00;&#x4E2A;&#x786C;&#x76D8;&#xFF0C;&#x7136;&#x540E;&#x538B;&#x7F29;&#x51FA;&#x4F60;&#x8981;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x7136;&#x540E;&#x5220;&#x9664;&#x5377;&#x3002;</p>
-<h2 id="Step2-&#x5236;&#x4F5C;&#x542F;&#x52A8;&#x76D8;"><a href="#Step2-&#x5236;&#x4F5C;&#x542F;&#x52A8;&#x76D8;" class="headerlink" title="Step2 &#x5236;&#x4F5C;&#x542F;&#x52A8;&#x76D8;"></a>Step2 &#x5236;&#x4F5C;&#x542F;&#x52A8;&#x76D8;</h2><p><a target="_blank" rel="noopener" href="https://cn.ultraiso.net/uiso9_cn.exe">&#x4E0B;&#x8F7D;UltralSO</a>&#xFF0C;&#x6253;&#x5F00;&#x9009;&#x62E9;&#x8BD5;&#x7528;&#xFF0C;&#x62D6;&#x5165;iso&#x6587;&#x4EF6;&#x3002;<br>&#x5355;&#x51FB;&#x5DE5;&#x5177;&#x680F;&#x4E0A;&#x7684;[&#x542F;&#x52A8;]-&gt;[&#x5199;&#x5165;&#x786C;&#x76D8;&#x6620;&#x50CF;]&#x3002;&#x7136;&#x540E;&#x9009;&#x62E9;<strong>&#x786C;&#x76D8;&#x9A71;&#x52A8;&#x5668;</strong>&#x4E3A;&#x6307;&#x5B9A;U&#x76D8;&#xFF0C;&#x5199;&#x5165;&#x65B9;&#x5F0F;&#x4E3A;USB-HDD+&#x3002;&#x8BF7;&#x4E0D;&#x8981;&#x548C;&#x535A;&#x4E3B;&#x4E00;&#x6837;&#x624B;&#x8D31;&#x9009;&#x4E86;&#x8F6F;&#x76D8;&#x9A71;&#x52A8;&#x5668;&#x2026;&#x2026;&#x7136;&#x540E;&#x6309;&#x4E0B;&#x5199;&#x5165;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
-<h2 id="&#x975E;&#x5FC5;&#x987B;&#x9879;&#xFF0C;&#x5173;&#x95ED;&#x5FEB;&#x901F;&#x542F;&#x52A8;"><a href="#&#x975E;&#x5FC5;&#x987B;&#x9879;&#xFF0C;&#x5173;&#x95ED;&#x5FEB;&#x901F;&#x542F;&#x52A8;" class="headerlink" title="&#x975E;&#x5FC5;&#x987B;&#x9879;&#xFF0C;&#x5173;&#x95ED;&#x5FEB;&#x901F;&#x542F;&#x52A8;"></a>&#x975E;&#x5FC5;&#x987B;&#x9879;&#xFF0C;&#x5173;&#x95ED;&#x5FEB;&#x901F;&#x542F;&#x52A8;</h2><p>&#x6309;&#x4F4F;Win + X&#xFF0C;&#x9009;&#x62E9;[&#x7535;&#x6E90;&#x9009;&#x9879;]-&gt;[&#x5176;&#x4ED6;&#x7535;&#x6E90;&#x8BBE;&#x7F6E;]&#xFF0C;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#xFF1A;[&#x9009;&#x62E9;&#x7535;&#x6E90;&#x6309;&#x94AE;&#x7684;&#x529F;&#x80FD;] -&gt; [&#x66F4;&#x6539;&#x5F53;&#x524D;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x8BBE;&#x7F6E;] -&gt; [&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x5FEB;&#x901F;&#x542F;&#x52A8;] -&gt; [&#x4FDD;&#x5B58;&#x4FEE;&#x6539;]</p>
-<p>&#x867D;&#x7136;&#x539F;&#x535A;&#x4E3B;&#x5199;&#x4E86;&#x8FD9;&#x6761;&#xFF0C;&#x4F46;&#x6211;&#x611F;&#x89C9;&#x597D;&#x50CF;&#x662F;&#x7528;&#x4E0D;&#x7740;&#x7684;&#xFF0C;&#x5F00;&#x673A;&#x957F;&#x6309;&#x5BF9;&#x5E94;&#x4E3B;&#x677F;&#x7684;bios&#x6309;&#x952E;&#x5C31;&#x53EF;&#x4EE5;&#x987A;&#x5229;&#x8FDB;&#x5165;bios&#x3002;&#x4F46;&#x662F;&#x7981;&#x7528;&#x5FEB;&#x901F;&#x542F;&#x52A8;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x89E3;&#x51B3;B450M&#x4E3B;&#x677F;&#x5173;&#x673A;&#x540E;&#x7B2C;&#x4E00;&#x6B21;&#x5F00;&#x673A;&#x4E0D;&#x8FC7;&#x81EA;&#x68C0;&#x7684;&#x95EE;&#x9898;&#xFF0C;<br>&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x6548;&#xFF0C;&#x6211;&#x4E5F;&#x4E0D;&#x61C2;&#x1F613;&#x3002;</p>
-<h2 id="Step3-&#x8FDB;&#x5165;bios&#x4FEE;&#x6539;&#x542F;&#x52A8;&#x987A;&#x5E8F;"><a href="#Step3-&#x8FDB;&#x5165;bios&#x4FEE;&#x6539;&#x542F;&#x52A8;&#x987A;&#x5E8F;" class="headerlink" title="Step3 &#x8FDB;&#x5165;bios&#x4FEE;&#x6539;&#x542F;&#x52A8;&#x987A;&#x5E8F;"></a>Step3 &#x8FDB;&#x5165;bios&#x4FEE;&#x6539;&#x542F;&#x52A8;&#x987A;&#x5E8F;</h2><p>&#x63D2;&#x4E0A;U&#x76D8;&#x5E76;&#x91CD;&#x542F;&#xFF0C;&#x957F;&#x6309;&#x5BF9;&#x5E94;&#x6309;&#x94AE;&#xFF0C;&#x6211;&#x7684;&#x673A;&#x68B0;&#x9769;&#x547D;&#x7B14;&#x8BB0;&#x672C;&#x6309;&#x7684;&#x662F;F2&#x3002;&#x8FDB;&#x5165;bios&#xFF0C;&#x9009;&#x62E9;boot&#xFF0C;&#x7136;&#x540E;&#x628A;&#x63D2;&#x8FDB;&#x53BB;&#x7684;U&#x76D8;&#x8BBE;&#x4E3A;&#x5F00;&#x673A;&#x9996;&#x9009;&#x9879;&#x3002;&#x4FDD;&#x5B58;&#x5E76;&#x9000;&#x51FA;&#x3002;</p>
-<h2 id="Step4-&#x5B89;&#x88C5;Ubuntu"><a href="#Step4-&#x5B89;&#x88C5;Ubuntu" class="headerlink" title="Step4 &#x5B89;&#x88C5;Ubuntu"></a>Step4 &#x5B89;&#x88C5;Ubuntu</h2><p>&#x91CD;&#x542F;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x5165;&#x5230;&#x5B89;&#x88C5;&#x5F15;&#x5BFC;&#xFF0C;&#x5EFA;&#x8BAE;&#x9009;&#x62E9;&#x82F1;&#x6587;&#x7CFB;&#x7EDF;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x7EED;&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8F93;&#x5165;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x9009;&#x62E9;&#x4E86;&#x4E2D;&#x6587;&#x7CFB;&#x7EDF;&#x4F60;&#x7684;Desktop&#x4F1A;&#x53D8;&#x6210;&#x4E2D;&#x6587;&#x7684;[&#x684C;&#x9762;]&#xFF0C;&#x975E;&#x5E38;&#x86CB;&#x75BC;&#x3002;<br>&#x9009;&#x62E9;Minimal installation&#x5B89;&#x88C5;&#xFF0C;&#x4E0D;&#x8981;&#x52FE;&#x9009;Other Option&#x3002;</p>
-<h4 id="&#x6CE8;&#x610F;&#xFF1A;Installation-type"><a href="#&#x6CE8;&#x610F;&#xFF1A;Installation-type" class="headerlink" title="&#x6CE8;&#x610F;&#xFF1A;Installation type"></a>&#x6CE8;&#x610F;&#xFF1A;Installation type</h4><p>&#x8FD9;&#x91CC;&#x662F;&#x6211;&#x548C;&#x539F;&#x535A;&#x6587;&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x9009;&#x62E9;&#x7684;&#x662F;Install Ubuntu alongside WindowsBoot Manager&#x800C;&#x4E0D;&#x662F;Something else.<br>&#x5B9E;&#x6D4B;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x9009;&#x9879;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x5B89;&#x88C5;&#x7CFB;&#x7EDF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x7279;&#x522B;&#x8BBE;&#x7F6E;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x70B9;&#x51FB;<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amorx12345/article/details/97510324">&#x539F;&#x535A;&#x6587;</a><br>&#x67E5;&#x770B;&#x5982;&#x4F55;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x533A;&#x3002;</p>
-<p>&#x540E;&#x9762;&#x5C31;&#x662F;&#x5E38;&#x89C4;&#x6D41;&#x7A0B;&#xFF0C;&#x91CD;&#x542F;&#xFF0C;&#x7136;&#x540E;&#x6309;&#x63D0;&#x793A;&#x62D4;&#x4E0B;U&#x76D8;&#x3002;</p>
-<h2 id="Step5-&#x8BBE;&#x7F6E;-&#x4E2A;&#x4EBA;&#x8E29;&#x5751;&#x70B9;"><a href="#Step5-&#x8BBE;&#x7F6E;-&#x4E2A;&#x4EBA;&#x8E29;&#x5751;&#x70B9;" class="headerlink" title="Step5 &#x8BBE;&#x7F6E;(&#x4E2A;&#x4EBA;&#x8E29;&#x5751;&#x70B9;)"></a>Step5 &#x8BBE;&#x7F6E;(&#x4E2A;&#x4EBA;&#x8E29;&#x5751;&#x70B9;)</h2><p>&#x5728;&#x6309;&#x8981;&#x6C42;&#x62D4;&#x6389;U&#x76D8;&#x4E4B;&#x540E;&#x6211;&#x8FDB;&#x5165;&#x7684;&#x662F;Windows&#x7CFB;&#x7EDF;&#xFF0C;&#x4F46;&#x662F;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x4E5F;&#x6CA1;&#x6709;&#x8FDB;&#x5165;&#x5F15;&#x5BFC;&#x83DC;&#x5355;&#xFF0C;&#x6309;&#x7167;<a target="_blank" rel="noopener" href="https://blog.csdn.net/billy_chen_2013/article/details/17425363?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~first_rank_v2~rank_v25-6-17425363.nonecase&amp;utm_term=easybcd%E8%AF%86%E5%88%AB%E4%B8%8D%E4%BA%86linux">&#x5176;&#x4ED6;&#x6559;&#x7A0B;</a><br>&#x4E0B;&#x8F7D;&#x4E86;EasyCBD&#x4E4B;&#x7C7B;&#x7684;&#x8F6F;&#x4EF6;&#xFF0C;&#x7136;&#x800C;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5375;&#x7528;&#x1F625;&#x4E8E;&#x662F;&#x81EA;&#x5DF1;&#x6478;&#x7D22;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x53D1;&#x73B0;&#x53EA;&#x8981;&#x518D;&#x8FDB;&#x5230;bios&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x5230;Boot&#x680F;&#x76EE;&#xFF0C;&#x627E;&#x5230;<strong>UEFI Hard Disk Drive BBS Priorities</strong><br>&#x7136;&#x540E;&#x628A;Ubuntu&#x79FB;&#x5230;windows&#x4E0A;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4FDD;&#x5B58;&#x7136;&#x540E;&#x9000;&#x51FA;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x5230;&#x6B63;&#x5E38;&#x7684;&#x5F15;&#x5BFC;&#x754C;&#x9762;&#x3002;</p>
-<p>&#x6253;&#x5F00;terminal&#xFF0C;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x66F4;&#x65B0;&#x3002;</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="&#x7ED3;&#x8BED;"><a href="#&#x7ED3;&#x8BED;" class="headerlink" title="&#x7ED3;&#x8BED;"></a>&#x7ED3;&#x8BED;</h2><p>&#x91CD;&#x65B0;&#x770B;&#x4E86;&#x4E00;&#x4E0B;&#x6D41;&#x7A0B;&#x611F;&#x89C9;&#x4E5F;&#x6CA1;&#x5F88;&#x591A;&#x4E1C;&#x897F;&#xFF0C;&#x4F46;&#x5F53;&#x65F6;&#x8FD8;&#x662F;&#x6298;&#x817E;&#x4E86;&#x5F88;&#x4E45;&#x2026;&#x2026;&#x4E4B;&#x540E;&#x518D;&#x66F4;&#x65B0;&#x4E00;&#x7BC7;&#x7528;hexo+github.io+travisci&#x642D;&#x535A;&#x5BA2;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5DEE;&#x4E0D;&#x591A;&#x6691;&#x5047;&#x4E3A;&#x6570;&#x4E0D;&#x591A;&#x5E72;&#x7684;&#x6709;&#x610F;&#x4E49;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x8FD9;&#x4E9B;&#x4E86;&#x3002;<br>&#x8BB2;&#x4E0D;&#x5B9A;&#x4E4B;&#x540E;&#x518D;&#x5199;&#x4E2A;&#x5341;&#x4E09;&#x673A;&#x5175;&#x9632;&#x536B;&#x5708;&#x7684;&#x5B89;&#x5229;&#x6587;&#xFF08;&#x8FEB;&#x771F;&#xFF09;&#x3002;&#x6211;&#x4EE5;&#x540E;&#x5E94;&#x8BE5;&#x6BCF;&#x4E2A;&#x6708;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x5237;&#x6D1B;&#x8C37;&#x8FD8;&#x6709;leetcode&#x7684;&#x8FDB;&#x5EA6;&#x624D;&#x662F;&#x3002;</p>
-</body></html>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2020-10-10T07:47:43.485Z" itemprop="datePublished">2020-10-10</time>
-
-    </span>
-    <span class="post-description-item">
-        
-    </span>
-</div>
-
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/2020/10/10/2020/10/10/20%E5%B9%B48-10%E6%9C%88%E5%8F%8D%E6%80%9D/" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    20年8-9月反思
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/2020/10/10/2020/8/22/hexo+TravisCI%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2(1)%E9%83%A8%E7%BD%B2%E7%AF%87/" class="ui tiny button">
-                    
-                    hexo+TravisCI建立个人博客(1)部署篇
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
-    </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#引言"><span>引言</span></a></li><li><a href="#需要提前下载的内容"><span>需要提前下载的内容</span></a><ol><li><a href="#UltralSO"><span>UltralSO</span></a></li><li><a href="#Ubuntu20-04"><span>Ubuntu20.04</span></a></li></ol></li><li><a href="#Step1-删除卷"><span>Step1 删除卷</span></a></li><li><a href="#Step2-制作启动盘"><span>Step2 制作启动盘</span></a></li><li><a href="#非必须项，关闭快速启动"><span>非必须项，关闭快速启动</span></a></li><li><a href="#Step3-进入bios修改启动顺序"><span>Step3 进入bios修改启动顺序</span></a></li><li><a href="#Step4-安装Ubuntu"><span>Step4 安装Ubuntu</span></a><ol><li><a href="#注意：Installation-type"><span>注意：Installation type</span></a></li></ol></li></ol></li><li><a href="#Step5-设置-个人踩坑点"><span>Step5 设置(个人踩坑点)</span></a></li><li><a href="#结语"><span>结语</span></a></li></ol>
-                </div>
-
-            </div>
-            
-
-        </div>
-    </div>
-</div>
-
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2020 <a href="/">曹卓文</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
-
-    </div>
-
-
-
-
-<!-- scripts list from theme config.yml -->
-
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
-
-
-</body>
-</html>
+if(true){
+calcAndWriteTimes();
+}</script></body></html>
